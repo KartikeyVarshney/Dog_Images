@@ -20,7 +20,8 @@ node{
     }
     stage('Building Docker Image')
     {
-        sh "docker build -t ${imageName}:${imageTag} ."        echo "build succesfully..."
+        sh "docker build -t ${imageName}:${imageTag} ."
+        echo "build succesfully..."
     }
     stage('push image to nexus')
     {
