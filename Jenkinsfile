@@ -24,10 +24,12 @@ node{
     stage('push image to nexus')
     {
         withCredentials([usernamePassword(credentialsId: docker_credentials , usernameVariable : 'USERNAME' , passwordVariable: 'PASSWORD')])
-        sh "echo $PASSWORD |docker login ${nexusUrl} --username $USERNAME --password-stdin"
-        sh "docker tag dog-image:latest"
-        sh "docker push ${nexusUrl}"
-        echo "Image pushed to nexus repo..."
+        {
+            sh "echo $PASSWORD |docker login ${nexusUrl} --username $USERNAME --password-stdin"
+            sh "docker tag dog-image:latest"
+            sh "docker push ${nexusUrl}"
+            echo "Image pushed to nexus repo..."
+        }
     }
     stage('Deploy')
     {
