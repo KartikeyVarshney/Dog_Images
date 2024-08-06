@@ -1,7 +1,7 @@
 node{
     def gitUrl = 'https://github.com/KartikeyVarshney/Dog_Images.git'
     def branch = 'main'
-    def imageName = 'Dog-Image'
+    def imageName = 'dog-image'
     def imageTag = 'latest'
     // def credentialsId = '78f52c88-4ff7-4b93-9637-fff00e450f4a'
     def docker_credentials = 'a87a3ab6-81e5-432b-a33b-15cce363f863'
