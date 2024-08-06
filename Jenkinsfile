@@ -1,6 +1,8 @@
 node{
     def gitUrl = 'https://github.com/KartikeyVarshney/Dog_Images.git'
     def branch = 'main'
+    def imageName = 'Dog-Image'
+    def imageTag = 'latest'
     // def credentialsId = '78f52c88-4ff7-4b93-9637-fff00e450f4a'
     def docker_credentials = 'a87a3ab6-81e5-432b-a33b-15cce363f863'
     def nexusUrl = 'http://localhost:8082/repository/Dog_Image/'
@@ -26,8 +28,8 @@ node{
         withCredentials([usernamePassword(credentialsId: docker_credentials , usernameVariable : 'USERNAME' , passwordVariable: 'PASSWORD')])
         {
             sh "echo $PASSWORD |docker login ${nexusUrl} --username $USERNAME --password-stdin"
-            sh "docker tag dog-image:latest"
-            sh "docker push ${nexusUrl}"
+            sh "docker tag ${imageName}:${imageTag} ${nexusUrl}/${imageName}:${imageTag}"
+            sh "docker push ${nexusUrl}/${imageName}:${imageTag}"
             echo "Image pushed to nexus repo..."
         }
     }
