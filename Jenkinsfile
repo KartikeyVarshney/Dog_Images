@@ -35,8 +35,9 @@ node{
     }
     stage('Deploy')
     {
-        sh 'kubectl apply -f deployment.yaml'
-        sh 'kubectl apply -f service.yaml'
+        sh "docker run -p 4000:4000 -d ${nexusUrl}/${imageName}"
+        // sh 'kubectl apply -f deployment.yaml'
+        // sh 'kubectl apply -f service.yaml'
     }
 
 }
